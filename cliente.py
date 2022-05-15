@@ -20,27 +20,35 @@ class Cliente(Pessoa):
             print(f'Agência: {conta._agencia}/  '
                   f'Nº Conta: {conta._num_conta}')
 
+    def ver_poupanca(self):
+        for conta in self.conta_poupanca:
+            print('Poupanca: \n')
+            print(f'Agência: {conta._agencia}/  '
+                  f'Nº Conta: {conta._num_conta}')
+
 
 class ContaCorrente(Conta):
 
-    def __init__(self, agencia, num_conta, saldo):
-        super().__init__()
-        self._agencia = agencia
-        self._num_conta = num_conta
-        self._saldo = saldo
-
-    @property
-    def saldo(self):
-
-        return f'Saldo atual: {self._saldo}'
-
     def sacar(self, qtd):
+        limite = -500
         print(f'Sacando: {qtd}')
-        self._saldo -= qtd
-        return self._saldo
+        if not qtd > self._saldo:
+            self._saldo -= qtd
+            return self._saldo
+        else:
+            caixa = self._saldo
+            self._saldo -= (qtd + limite) - limite
+            if self._saldo < limite:
+                self._saldo = caixa
+                return print(f'Saldo insuficiente')
 
 
 class ContaPoupanca(Conta):
 
     def sacar(self, qtd):
-        pass
+        print(f'Sacando: {qtd}')
+        if not qtd > self._saldo:
+            self._saldo -= qtd
+            return self._saldo
+
+        return print('Saldo insuficiente')
