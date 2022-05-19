@@ -1,24 +1,32 @@
-from Banco.cliente import Cliente, ContaCorrente, ContaPoupanca
+from cliente import Cliente
+from conta import ContaCorrente, ContaPoupanca
+from banco import Banco
+
+banco = Banco()
 
 c1 = Cliente('Jonatas Emanuel', 23)
+conta1 = ContaCorrente(2222, 2343, 5)
 
-corrente = ContaCorrente(234,
-                         2222,
-                         100)
+banco.add_cliente(c1)
+banco.add_conta(conta1)
 
-c1.add_corrente(corrente)
-print(c1.nome)
-c1.ver_corrente()
-print(corrente.saldo)
-corrente.sacar(700)
-print(corrente.saldo)
-print()
+if banco.autenticar(c1):
+    c1.conta.depositar(230)
+    c1.conta.sacar(20)
+else:
+    print('Cliente sem autorização')
 
-poupanca = ContaPoupanca(3333,
-                         3243,
-                         45)
-c1.add_poupanca(poupanca)
-c1.ver_poupanca()
-poupanca.sacar(23)
-poupanca.sacar(434)
-print(poupanca.saldo)
+
+c2 = Cliente('Jake Peralta', 39)
+conta2 = ContaPoupanca(1111, 2441, 0)
+c2.add_conta(conta2)
+
+banco.add_conta(conta2)
+banco.add_cliente(c2)
+
+if banco.autenticar(c2):
+    c2.conta.depositar(100)
+    c2.conta.sacar(10)
+else:
+    print('Cliente sem autorização')
+
