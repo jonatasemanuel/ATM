@@ -2,8 +2,9 @@ from cliente import Cliente
 from conta import ContaCorrente, ContaPoupanca
 from banco import Banco
 
-bank = Banco()
 
+bank = Banco()
+print()
 user1 = Cliente('Jonatas Emanuel', 23)
 account1 = ContaPoupanca(3333, 7765, 0)
 
@@ -17,7 +18,7 @@ if bank.autenticar(user1):
 else:
     print('Cliente sem autorização')
 
-
+print()
 user2 = Cliente('Jake Peralta', 39)
 account2 = ContaCorrente(2222, 2441, 0)
 
@@ -31,6 +32,7 @@ if bank.autenticar(user2):
 else:
     print('Cliente sem autorização')
 
+print()
 user3 = Cliente('Michel Scott', 52)
 account3 = ContaCorrente(4354, 4563, 0)
 
