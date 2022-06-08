@@ -5,18 +5,37 @@ from agency.bank import Bank
 
 bank = Bank()
 print()
-user1 = User('Jonatas Emanuel', 23)
-account1 = SavingsAccount(3333, 7765, 0)
 
-user1.add_account(account1)
-bank.add_account(account1)
-bank.add_user(user1)
+usernarme = str(input('Name: '))
+user_age = int(input('Age: '))
+user = User(usernarme, user_age)
 
-if bank.authenticate(user1):
-    user1.account.deposit(100)
-    user1.account.to_withdraw(90)
-else:
-    print('Cliente sem autorização')
+account_type = int(input('Choose your type account:\n'
+                         '[ 1 ] → Savings Account\n'
+                         '[ 2 ] → Checking Account\n'
+                         '[ 0 ] → Cancel operation\n'))
+
+if account_type == 1:
+    user_agency = int(input('Agency: '))
+    account_number = int(input('Account: '))
+    account = SavingsAccount(user_agency, account_number, 0) # agency, acc, balance
+
+    user.add_account(account)
+    bank.add_account(account)
+    bank.add_user(user)
+
+    if bank.authenticate(user):
+        op = int(input('For deposit press [ 1 ]: \n'
+                       'For to withdraw   [ 2 ]: \n'
+                       'For detail        [ 3 ]: \n'))
+        if op == 1:
+            value_to_deposit = float(input('$'))
+            user.account.deposit(value_to_deposit)
+        if op == 2:
+            value_to_withdraw = float(input('$'))
+            user.account.to_withdraw(value_to_withdraw)
+    else:
+        print('No authenticate')
 
 # print()
 # user2 = Cliente('Jake Peralta', 39)

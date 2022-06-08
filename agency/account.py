@@ -30,9 +30,9 @@ class CheckingAccount(Account):
         self.limit = limit
 
     def to_withdraw(self, qtd):
-        print(f'Sacando: {qtd}')
+        print(f'Drawing: {qtd}')
         if self.balance + self.limit < qtd:
-            print('Saldo insuficiente')
+            print('No cash')
             return
 
         self.balance -= qtd
