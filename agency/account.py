@@ -10,13 +10,13 @@ class Account(ABC):
 
     def deposit(self, qtd):
         self.balance += qtd
-        print(f'Depositing: {qtd}')
+        print(f'Depositing: US$ {qtd}')
         self.details()
 
     def details(self):
         print(f'Agency: {self.agency} '
               f'Account: {self.account} '
-              f'Balance: {self.balance}')
+              f'Balance: US$ {self.balance}')
 
     @abstractmethod
     def to_withdraw(self, qtd):
@@ -25,12 +25,12 @@ class Account(ABC):
 
 class CheckingAccount(Account):
 
-    def __init__(self, agency, account, balance, limit=100):
+    def __init__(self, agency, account, balance, limit=500):
         super().__init__(agency, account, balance)
         self.limit = limit
 
     def to_withdraw(self, qtd):
-        print(f'Drawing: {qtd}')
+        print(f'Drawing: US$ {qtd}')
         if self.balance + self.limit < qtd:
             print('No cash')
             return
@@ -42,9 +42,9 @@ class CheckingAccount(Account):
 class SavingsAccount(Account):
 
     def to_withdraw(self, qtd):
-        print(f'Sacando: {qtd}')
+        print(f'Drawing: US$ {qtd}')
         if self.balance < qtd:
-            print('Saldo insuficiente')
+            print('No cash')
             return
 
         self.balance -= qtd
