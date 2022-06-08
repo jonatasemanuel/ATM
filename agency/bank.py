@@ -1,25 +1,25 @@
 class Bank:
 
     def __init__(self):
-        self.agencias = [1111, 2222, 3333]
-        self.clientes = []
-        self.contas = []
+        self.agencies = [1111, 2222, 3333]
+        self.customers = []
+        self.bank_accounts = []
 
-    def add_cliente(self, cliente):
-        self.clientes.append(cliente)
+    def add_user(self, user):
+        self.customers.append(user)
 
-    def add_conta(self, conta):
-        self.contas.append(conta)
+    def add_account(self, conta):
+        self.bank_accounts.append(conta)
 
-    def autenticar(self, cliente):
+    def autenticar(self, user):
 
-        if cliente not in self.clientes:
+        if user not in self.customers:
             return False
 
-        if cliente.conta not in self.contas:
+        if user.account not in self.bank_accounts:
             return False
 
-        if cliente.conta.agencia not in self.agencias:
+        if user.account.agencia not in self.agencies:
             return False
 
         return True

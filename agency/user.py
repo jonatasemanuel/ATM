@@ -1,11 +1,11 @@
 from agency.person import Person
 
 
-class Cliente(Person):
+class User(Person):
 
     def __init__(self, nome, idade):
         super().__init__(nome, idade)
-        self.conta = None
+        self.account = None
 
-    def add_conta(self, conta):
-        self.conta = conta
+    def add_account(self, conta):
+        self.account = conta

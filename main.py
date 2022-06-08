@@ -1,20 +1,20 @@
-from agency.client import Cliente
+from agency.user import User
 from agency.account import CheckingAccount, SavingsAccount
 from agency.bank import Bank
 
 
 bank = Bank()
 print()
-user1 = Cliente('Jonatas Emanuel', 23)
+user1 = User('Jonatas Emanuel', 23)
 account1 = SavingsAccount(3333, 7765, 0)
 
-user1.add_conta(account1)
-bank.add_conta(account1)
-bank.add_cliente(user1)
+user1.add_account(account1)
+bank.add_account(account1)
+bank.add_user(user1)
 
 if bank.autenticar(user1):
-    user1.conta.depositar(100)
-    user1.conta.sacar(110)
+    user1.account.depositar(100)
+    user1.account.sacar(110)
 else:
     print('Cliente sem autorização')
 
