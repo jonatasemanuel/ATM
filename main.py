@@ -9,7 +9,8 @@ print()
 username = str(input('Name: '))
 user_age = int(input('Age: '))
 user = User(username, user_age)
-print('__' * 15)
+print('__' * 20)
+
 account_type = int(input('Choose your type account↓\n'
                          '[ 1 ] → Savings Account\n'
                          '[ 2 ] → Checking Account\n'
@@ -29,35 +30,35 @@ user.add_account(account)
 bank.add_account(account)
 bank.add_user(user)
 
-if bank.authenticate(user):
-    print('__' * 15)
-    op = int(input('[ 1 ] → Deposit \n'
-                    '[ 2 ] → To withdraw \n'
-                    '[ 3 ] → Detail \n'
-                    '[ 0 ] → Exit \n'
-                    '→ '))
-    if op == 1:
-        value_to_deposit = float(input('US$ '))
-        user.account.deposit(value_to_deposit)
-    if op == 2:
-        value_to_withdraw = float(input('US$ '))
-        user.account.to_withdraw(value_to_withdraw)
-    if op == 3:
-        user.account.details()
-    if op == 0:
-        pass
-        # break
-    print('__' * 15)
-    cont = int(input('Do would you like a new operation ?\n'
-                        '[ 1 ] Yes\n'
-                        '[ 2 ] No\n'
+while True:
+
+    if bank.authenticate(user):
+        print('__' * 15)
+        op = int(input('[ 1 ] → Deposit \n'
+                        '[ 2 ] → To withdraw \n'
+                        '[ 3 ] → Detail \n'
+                        '[ 0 ] → Exit \n'
                         '→ '))
-    if cont == 1:
-        pass
-        # continue
+        if op == 1:
+            value_to_deposit = float(input('US$ '))
+            user.account.deposit(value_to_deposit)
+        if op == 2:
+            value_to_withdraw = float(input('US$ '))
+            user.account.to_withdraw(value_to_withdraw)
+        if op == 3:
+            user.account.details()
+        if op == 0:
+            pass
+            # break
+        print('__' * 15)
+        cont = int(input('Do would you like a new operation ?\n'
+                            '[ 1 ] Yes\n'
+                            '[ 2 ] No\n'
+                            '→ '))
+        if cont == 1:
+            continue
+        else:
+            break
     else:
-        pass
-        # break
-else:
-    print('__' * 15)
-    print('No authenticate')
+        print('__' * 15)
+        print('No authenticate')
