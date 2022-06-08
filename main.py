@@ -26,10 +26,10 @@ if account_type == 1:
     bank.add_user(user)
 
     if bank.authenticate(user):
-        op = int(input('[ 1 ]For deposit press \n'
-                       '[ 2 ]For to withdraw \n'
-                       '[ 3 ]For detail \n'
-                       '[ 0 ]For exit \n'
+        op = int(input('[ 1 ] → Deposit press \n'
+                       '[ 2 ] → To withdraw \n'
+                       '[ 3 ] → Detail \n'
+                       '[ 0 ] → Exit \n'
                        '→'))
         if op == 1:
             value_to_deposit = float(input('$'))
