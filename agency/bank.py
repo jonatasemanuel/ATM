@@ -1,4 +1,4 @@
-class Banco:
+class Bank:
 
     def __init__(self):
         self.agencias = [1111, 2222, 3333]

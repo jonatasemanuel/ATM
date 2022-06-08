@@ -23,7 +23,7 @@ class Conta(ABC):
         pass
 
 
-class ContaCorrente(Conta):
+class CheckingAccount(Conta):
 
     def __init__(self, agencia, conta, saldo, limite=100):
         super().__init__(agencia, conta, saldo)
@@ -39,7 +39,7 @@ class ContaCorrente(Conta):
         self.detalhes()
 
 
-class ContaPoupanca(Conta):
+class SavingsAccount(Conta):
 
     def sacar(self, qtd):
         print(f'Sacando: {qtd}')
