@@ -3,9 +3,9 @@ from agency.person import Person
 
 class User(Person):
 
-    def __init__(self, nome, idade):
-        super().__init__(nome, idade)
+    def __init__(self, name, age):
+        super().__init__(name, age)
         self.account = None
 
-    def add_account(self, conta):
-        self.account = conta
+    def add_account(self, account):
+        self.account = account

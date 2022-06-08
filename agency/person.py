@@ -1,14 +1,14 @@
 class Person:
 
-    def __init__(self, nome, idade):
-        self._nome = nome
-        self._idade = idade
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
 
     @property
-    def nome(self):
-        return self._nome
+    def name(self):
+        return self._name
 
     @property
-    def idade(self):
-        return self._idade
+    def age(self):
+        return self._age
 

@@ -25,8 +25,8 @@ class Account(ABC):
 
 class CheckingAccount(Account):
 
-    def __init__(self, agency, conta, balance, limit=100):
-        super().__init__(agency, conta, balance)
+    def __init__(self, agency, account, balance, limit=100):
+        super().__init__(agency, account, balance)
         self.limit = limit
 
     def to_withdraw(self, qtd):
