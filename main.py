@@ -12,9 +12,9 @@ user1.add_account(account1)
 bank.add_account(account1)
 bank.add_user(user1)
 
-if bank.autenticar(user1):
-    user1.account.depositar(100)
-    user1.account.sacar(110)
+if bank.authenticate(user1):
+    user1.account.deposit(100)
+    user1.account.to_withdraw(90)
 else:
     print('Cliente sem autorização')
 

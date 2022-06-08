@@ -11,7 +11,7 @@ class Bank:
     def add_account(self, conta):
         self.bank_accounts.append(conta)
 
-    def autenticar(self, user):
+    def authenticate(self, user):
 
         if user not in self.customers:
             return False
@@ -19,7 +19,7 @@ class Bank:
         if user.account not in self.bank_accounts:
             return False
 
-        if user.account.agencia not in self.agencies:
+        if user.account.agency not in self.agencies:
             return False
 
         return True
