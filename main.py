@@ -1,7 +1,7 @@
 from agency.user import User
 from agency.account import CheckingAccount, SavingsAccount
 from agency.bank import Bank
-from validation.options_validate import atm_options, new_operation_input, show_account_types, user_account_input, user_age_input, user_agency_input, username_input
+from validation.options_validate import *
 
 
 bank = Bank()
