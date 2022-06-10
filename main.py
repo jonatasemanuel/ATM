@@ -1,46 +1,63 @@
 from agency.user import User
 from agency.account import CheckingAccount, SavingsAccount
 from agency.bank import Bank
+from validation.options_validate import atm_options, new_operation_input, show_account_types, user_account_input, user_age_input, user_agency_input, username_input
 
 
 bank = Bank()
+print('Avaible agencies: 1111 | 2222 | 3333')
 print()
-user1 = User('Jonatas Emanuel', 23)
-account1 = SavingsAccount(3333, 7765, 0)
 
-user1.add_account(account1)
-bank.add_account(account1)
-bank.add_user(user1)
+username = username_input()
+user_age = user_age_input()
+user = User(username, user_age)
 
-if bank.authenticate(user1):
-    user1.account.deposit(100)
-    user1.account.to_withdraw(90)
-else:
-    print('Cliente sem autorização')
+print('__' * 20)
 
-# print()
-# user2 = Cliente('Jake Peralta', 39)
-# account2 = ContaCorrente(2222, 2441, 0)
+account_type = show_account_types()
 
-# user2.add_conta(account2)
-# bank.add_conta(account2)
-# bank.add_cliente(user2)
+print('__' * 20)
+user_agency = user_agency_input()
+account_number = user_account_input()
 
-# if bank.autenticar(user2):
-#     user2.conta.depositar(100)
-#     user2.conta.sacar(110)
-# else:
-#     print('Cliente sem autorização')
+if account_type == 1:
+    account = SavingsAccount(user_agency, account_number, 0)
+if account_type == 2:
+    account = CheckingAccount(user_agency, account_number, 0)
 
-# print()
-# user3 = Cliente('Michel Scott', 52)
-# account3 = ContaCorrente(4354, 4563, 0)
+user.add_account(account)
+bank.add_account(account)
+bank.add_user(user)
 
-# user3.add_conta(account3)
-# bank.add_conta(account3)
-# bank.add_cliente(user3)
+while True:
 
-# if bank.autenticar(user3):
-#     user3.conta.sacar(4500)
-# else:
-#     print('Cliente sem autorização')
+    if bank.authenticate(user):
+        print('__' * 20)
+
+        op = atm_options()
+        if op == 1:
+            value_to_deposit = float(input('US$ '))
+            user.account.deposit(value_to_deposit)
+        if op == 2:
+            value_to_withdraw = float(input('US$ '))
+            user.account.to_withdraw(value_to_withdraw)
+        if op == 3:
+            user.account.details()
+        if op == 0:
+            break
+        else:
+            # run the options(op) again
+            # make de funciction with the options validation.
+            pass
+
+        print('__' * 20)
+
+        cont = new_operation_input()
+        if cont == 1:
+            continue
+        else:
+            break
+    else:
+        print('__' * 20)
+        print('No authenticate')
+        break
